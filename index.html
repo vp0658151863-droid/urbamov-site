@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urbamov — Le covoiturage domicile-travail, plus simple et plus vert</title>
+  <meta name="description" content="Urbamov met en relation collègues et voisins pour partager les trajets domicile-travail : moins de frais, moins de CO₂. Bientôt disponible sur iOS et Android." />
+  <meta name="theme-color" content="#4E8B33" />
+  <link rel="icon" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Urbamov — Covoiturage domicile-travail" />
+  <meta property="og:description" content="Partagez vos trajets du quotidien. Moins de frais, moins de CO₂. Bientôt disponible." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://urbamov.fr" />
+  <meta property="og:image" content="https://urbamov.fr/icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green: #4E8B33;
+      --green-deep: #2F5E1F;
+      --teal: #17958C;
+      --teal-deep: #0E6E68;
+      --ink: #1B2A1F;
+      --muted: #5C6B5E;
+      --bg: #F7F4EE;
+      --card: #FFFFFF;
+      --border: #E7E3DA;
+      --grad: linear-gradient(120deg, var(--green) 0%, var(--teal) 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Décors de fond : halos verts/turquoise */
+    .bg-orbs { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.30; }
+    .orb.a { width: 520px; height: 520px; background: var(--green); top: -160px; right: -120px; }
+    .orb.b { width: 460px; height: 460px; background: var(--teal); bottom: -180px; left: -140px; }
+    .orb.c { width: 300px; height: 300px; background: #9BCB4B; top: 40%; left: 55%; opacity: 0.16; }
+
+    .wrap { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header { display: flex; align-items: center; gap: 12px; padding: 28px 0; }
+    header .mark { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 6px 18px rgba(20,48,28,0.18); }
+    header .name { font-family: "Fraunces", serif; font-weight: 600; font-size: 24px; letter-spacing: -0.5px; }
+    header .name b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Hero */
+    .hero { padding: 40px 0 24px; max-width: 760px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;
+      color: var(--teal-deep); background: rgba(23,149,140,0.10);
+      padding: 7px 14px; border-radius: 999px; margin-bottom: 22px;
+    }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 rgba(23,149,140,0.5); animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(23,149,140,0.45); } 70% { box-shadow: 0 0 0 10px rgba(23,149,140,0); } 100% { box-shadow: 0 0 0 0 rgba(23,149,140,0); } }
+
+    h1 {
+      font-family: "Fraunces", serif; font-weight: 600;
+      font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -1.2px;
+      margin-bottom: 20px;
+    }
+    h1 .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { font-size: clamp(17px, 2.4vw, 20px); color: var(--muted); max-width: 620px; }
+
+    /* Stores */
+    .stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .store {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; min-width: 190px;
+    }
+    .store svg { width: 24px; height: 24px; flex: none; }
+    .store .t { display: flex; flex-direction: column; line-height: 1.15; }
+    .store .t small { font-size: 11px; opacity: 0.75; }
+    .store .t span { font-size: 15px; font-weight: 700; }
+    .store .soon { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; background: var(--grad); padding: 3px 8px; border-radius: 999px; }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 64px 0 48px; }
+    .feature { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px; box-shadow: 0 8px 30px rgba(20,48,28,0.05); }
+    .feature .ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: rgba(78,139,51,0.10); margin-bottom: 16px; }
+    .feature .ico svg { width: 24px; height: 24px; stroke: var(--green-deep); }
+    .feature h3 { font-family: "Fraunces", serif; font-weight: 600; font-size: 19px; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .feature p { font-size: 15px; color: var(--muted); }
+
+    /* Contact */
+    .contact { text-align: center; padding: 8px 0 12px; }
+    .contact p { color: var(--muted); font-size: 15px; }
+    .contact a { color: var(--green-deep); font-weight: 700; text-decoration: none; border-bottom: 2px solid rgba(78,139,51,0.25); }
+    .contact a:hover { border-color: var(--green); }
+
+    footer { border-top: 1px solid var(--border); margin-top: 48px; padding: 26px 0 48px; text-align: center; color: #8B948A; font-size: 13px; }
+    footer b { color: var(--ink); font-weight: 700; }
+
+    /* Apparition */
+    .reveal { opacity: 0; transform: translateY(16px); animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
+    .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; } .d3 { animation-delay: 0.25s; }
+    .d4 { animation-delay: 0.35s; } .d5 { animation-delay: 0.45s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } .orb, .dot { animation: none; } }
+
+    @media (max-width: 760px) {
+      .features { grid-template-columns: 1fr; gap: 14px; margin: 44px 0 36px; }
+      .store { min-width: 0; flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+
+  <div class="wrap">
+    <header class="reveal d1">
+      <img class="mark" src="icon.png" alt="Logo Urbamov" />
+      <div class="name"><b>Urbamov</b></div>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow reveal d1"><span class="dot"></span> Lancement prochain</span>
+      <h1 class="reveal d2">Le covoiturage <span class="accent">domicile-travail</span>, plus simple et plus vert.</h1>
+      <p class="lead reveal d3">Urbamov met en relation collègues et voisins pour partager les trajets du quotidien.
+        Moins de frais, moins de CO₂, et une communauté de proximité. Bientôt disponible sur iOS et Android.</p>
+
+      <div class="stores reveal d4">
+        <span class="store">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.75.85-1.98 1.5-3.05 1.42-.13-1.11.42-2.28 1.08-3.01.74-.83 2.03-1.44 3.09-1.39zM20.5 17.16c-.55 1.27-.82 1.84-1.53 2.96-1 1.56-2.4 3.5-4.14 3.51-1.55.02-1.95-1.01-4.05-1-2.1.01-2.54 1.02-4.09 1.01-1.74-.02-3.07-1.77-4.06-3.33-2.78-4.36-3.07-9.47-1.36-12.19 1.22-1.94 3.14-3.07 4.94-3.07 1.84 0 2.99 1.01 4.51 1.01 1.47 0 2.37-1.01 4.5-1.01 1.6 0 3.29.87 4.5 2.38-3.95 2.17-3.31 7.82.33 9.75z"/></svg>
+          <span class="t"><small>Bientôt sur</small><span>App Store</span></span>
+          <span class="soon">Bientôt</span>
+        </span>
+        <span class="store">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M3.6 2.2c-.24.25-.38.63-.38 1.13v17.34c0 .5.14.88.4 1.12l.07.06 9.72-9.7v-.22L3.69 2.15l-.09.05zM17 15.28l-3.24-3.23v-.22L17 8.6l.08.05 3.84 2.18c1.1.62 1.1 1.64 0 2.27L17.1 15.23l-.1.05zM16.1 16.18l-3.34-3.34-9.16 9.15c.36.39.96.44 1.64.06l10.86-5.87M16.1 7.68 5.24 1.82c-.68-.37-1.28-.32-1.64.07l9.16 9.14 3.34-3.35z"/></svg>
+          <span class="t"><small>Bientôt sur</small><span>Google Play</span></span>
+          <span class="soon">Bientôt</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature reveal d3">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.4-7-11a7 7 0 0114 0c0 5.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Vos trajets du quotidien</h3>
+        <p>Trouvez en quelques secondes qui fait la même route que vous, aux mêmes horaires.</p>
+      </div>
+      <div class="feature reveal d4">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1 1.5-2.5 1.8-2.5.8-2.5 1.8 1.1 1.7 2.5 1.7 2.5-.6 2.5-1.7"/></svg></div>
+        <h3>Un partage de frais juste</h3>
+        <p>Une participation au kilomètre, réglée simplement et en toute sécurité via l'application.</p>
+      </div>
+      <div class="feature reveal d5">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C7 8 6 11 6 14a6 6 0 0012 0c0-3-1-6-6-11z"/><path d="M12 20v-6"/></svg></div>
+        <h3>Un impact concret</h3>
+        <p>Suivez les kilomètres partagés et le CO₂ évité, pour vous comme pour votre entreprise.</p>
+      </div>
+    </section>
+
+    <section class="contact reveal d5">
+      <p>Une question, un partenariat entreprise&nbsp;? Écrivez-nous à <a href="mailto:support@urbamov.fr">support@urbamov.fr</a></p>
+    </section>
+
+    <footer>
+      <p>© 2026 <b>Urbamov</b> — Covoiturage domicile-travail · support@urbamov.fr</p>
+    </footer>
+  </div>
+</body>
+</html>
