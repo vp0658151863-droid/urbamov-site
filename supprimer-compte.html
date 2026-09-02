@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urbamov — Supprimer mon compte</title>
+  <style>
+    :root { --green: #4E8B33; --ink: #26101A; --muted: #6B5A61; --bg: #FAF6F1; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+           background: var(--bg); color: var(--ink); line-height: 1.6; padding: 24px; }
+    .card { max-width: 640px; margin: 32px auto; background: #fff; border-radius: 18px;
+            padding: 32px; box-shadow: 0 4px 24px rgba(20,48,28,0.08); }
+    .logo { font-weight: 800; font-size: 22px; color: var(--green); letter-spacing: 0.5px; }
+    h1 { font-size: 24px; margin: 18px 0 8px; }
+    h2 { font-size: 17px; margin: 24px 0 8px; color: var(--green); }
+    p, li { color: var(--muted); font-size: 15px; }
+    ol, ul { margin: 8px 0 8px 22px; }
+    .step { background: #F1F7EC; border-radius: 12px; padding: 16px 18px; margin: 12px 0; }
+    a.btn { display: inline-block; margin-top: 14px; background: var(--green); color: #fff;
+            text-decoration: none; padding: 12px 22px; border-radius: 12px; font-weight: 600; }
+    .note { font-size: 13px; color: #8C7B82; margin-top: 20px; border-top: 1px solid #F2EAE2; padding-top: 16px; }
+    code { background: #F1F7EC; padding: 1px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">urbamov</div>
+    <h1>Supprimer mon compte Urbamov</h1>
+    <p>Vous pouvez supprimer votre compte Urbamov et les données associées, soit directement dans
+       l'application, soit en nous adressant une demande par e-mail.</p>
+
+    <h2>Depuis l'application (le plus rapide)</h2>
+    <div class="step">
+      <ol>
+        <li>Ouvrez l'application Urbamov et connectez-vous.</li>
+        <li>Allez dans l'onglet <strong>Mon compte</strong>.</li>
+        <li>Tout en bas, touchez <strong>« Supprimer mon compte »</strong>.</li>
+        <li>Confirmez (re-saisie du mot de passe) : la suppression est définitive et immédiate.</li>
+      </ol>
+    </div>
+
+    <h2>Par e-mail (sans l'application)</h2>
+    <p>Si vous n'avez plus accès à l'application, envoyez-nous une demande depuis l'adresse e-mail
+       de votre compte :</p>
+    <a class="btn" href="mailto:support@urbamov.fr?subject=Suppression%20de%20mon%20compte%20Urbamov">
+      Demander la suppression par e-mail
+    </a>
+    <p style="margin-top:10px;"><code>support@urbamov.fr</code> — nous traitons la demande sous 30 jours.</p>
+
+    <h2>Données supprimées</h2>
+    <p>La suppression efface définitivement : votre profil, vos trajets et réservations, vos messages,
+       vos avis et vos jetons de notification. Il ne s'agit pas d'une simple désactivation.</p>
+
+    <h2>Données conservées (obligations légales)</h2>
+    <p>Les justificatifs de paiement et de transaction (via notre prestataire Stripe) sont conservés
+       le temps requis par les obligations comptables et fiscales, puis supprimés.</p>
+
+    <p class="note">Urbamov — covoiturage domicile-travail. Pour toute question relative à vos données
+       personnelles (RGPD) : <code>support@urbamov.fr</code>.</p>
+  </div>
+</body>
+</html>
